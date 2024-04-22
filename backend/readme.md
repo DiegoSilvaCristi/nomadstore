@@ -11,6 +11,8 @@ python commerce.py
 
 Al principio implementé el endpoint trayendo la totalidad de productos cada vez que se hacía una request, sin embargo a veces tomaba mucho tiempo aún cuando habían productos de ID bajo. Entonces, decidí utilizar el máximo Id del carrito como límite de request en la lista de productos. 
 
+Consideré el descuento total como el descuento que se incluye en el carrito de compras
+
 # BORRAR DESPUÉS
 curl -X POST -H "Content-Type: application/json" -d '[
     {
