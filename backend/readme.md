@@ -1,5 +1,6 @@
 ## Activate the virtual environment
 source venv/bin/activate
+deactivate
 
 ## Install Flask
 pip install flask
