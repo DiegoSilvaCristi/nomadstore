@@ -6,7 +6,7 @@
 
 .page_layout{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
     height: 80vh;
@@ -31,6 +31,8 @@
 
 .button:hover{
     background-color: #e54b0e !important;
+    color: white !important;
+    border-color: #e54b0e !important;
 }
 
 p{
