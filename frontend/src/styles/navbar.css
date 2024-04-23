@@ -1,9 +1,8 @@
 
 .shopping_cart_icon{
-    width: 30px;
-    height: 30px;  
+    width: 40px;
+    height: 40px;  
     padding: 10px;
-    margin-right: 20px;
 }
 
 .shopping_cart_icon:hover{
@@ -29,9 +28,15 @@
     text-decoration: none;
     font-weight: bold;
     color: black;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .text:hover{
     color: #e54b0e;
+}
+
+.shopping_widget{
+display: flex;
+align-items: flex-end;
+margin-right: 20px;
 }
