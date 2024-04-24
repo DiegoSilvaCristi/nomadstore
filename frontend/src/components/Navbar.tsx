@@ -14,7 +14,6 @@ export default function Navbar() {
                 <Link to="/">
                     <img src={nomadLogo} className="store_logo_icon" alt="Nomad Logo" />
                 </Link>
-                <Link to="about" className="text">¿Qué es NomadStore?</Link>
             </div>
             
             <div className="shopping_widget">
