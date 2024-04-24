@@ -27,3 +27,12 @@
     font-size: 20px;
     font-weight: 600;
 }
+
+.discounted_total{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.total{
+    text-decoration: line-through;
+}

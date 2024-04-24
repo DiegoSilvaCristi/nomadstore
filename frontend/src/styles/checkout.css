@@ -11,3 +11,31 @@
     margin-top: 20px;
 }
 
+.checkout_layout{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.loading_button{
+    background-color: #e54b0e !important;
+    margin-top: 50px;
+}
+
+.shipping_alert{
+    font-weight: 600;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.title{
+    align-self: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}

@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 interface CartContextType {
-  cart: any; 
+  cart: any;
   setCart: React.Dispatch<React.SetStateAction<any>>;
 }
 
@@ -16,7 +16,20 @@ export function useCart(): CartContextType {
 }
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [cart, setCart] = useState<any>(null); 
+  const [cart, setCartState] = useState<any>(null);
+
+  useEffect(() => {
+    const storedCart = localStorage.getItem('shoppingCart');
+    if (storedCart) {
+      setCartState(JSON.parse(storedCart));
+    }
+  }, []);
+
+  const setCart = (newCart: any) => {
+    localStorage.setItem('shoppingCart', JSON.stringify(newCart));
+    setCartState(newCart);
+  };
+
   return (
     <CartContext.Provider value={{ cart, setCart }}>
       {children}

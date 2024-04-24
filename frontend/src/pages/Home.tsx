@@ -1,21 +1,9 @@
 import storeLogo from './../assets/store_logo.png';
-import { Button, List } from 'antd';
+import { Button, List, message  } from 'antd';
 import axios from 'axios';
-import getRandomInt from '../utils/randomNumber';
+import { getRandomInt } from '../utils/utils';
 import { useCart } from './../context/ShoppingCart'; 
 import { Link } from 'react-router-dom';
-
-async function getShoppingCart(setCart: any) {
-  try {
-    const number = getRandomInt(1, 20);
-    const response = await axios.get('https://dummyjson.com/carts/' + number);
-    setCart(response.data);
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-}
 
 export default function Home() {
     const { setCart } = useCart();
@@ -26,6 +14,28 @@ export default function Home() {
         '3. Para proceder con la compra, pincha el botón: "Finalizar Compra"',
         '4. Tranquilo, siempre puedes volver al inicio pinchando el logo de NomadStore en la esquina superior izquierda.', 
       ];
+
+      const [messageApi, contextHolder] = message.useMessage();
+
+      const cartCreationSuccess = () => {
+        messageApi.open({
+          type: 'success',
+          content: '¡Carrito creado con éxito!',
+        });
+      };
+
+      async function getShoppingCart(setCart: any) {
+        try {
+          const number = getRandomInt(1, 20);
+          const response = await axios.get('https://dummyjson.com/carts/' + number);
+          setCart(response.data);
+          cartCreationSuccess();
+          return response.data;
+        } catch (error) {
+          console.error(error);
+          return null;
+        }
+      }
 
   return (
     <div className="page_layout">
@@ -42,6 +52,7 @@ export default function Home() {
             />
       </div>
       <div className="button_layout">
+      {contextHolder}
         <Button type="default" className="button" onClick={() => getShoppingCart(setCart)}>Generar Carrito</Button>
         <Link to="/checkout">
           <Button type="default" className="button">Finalizar Compra</Button>
