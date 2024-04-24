@@ -1,8 +1,9 @@
 import storeLogo from './../assets/store_logo.png';
 import { Button, List } from 'antd';
 import axios from 'axios';
-import getRandomInt from './../utils/randomNumber';
+import getRandomInt from '../utils/randomNumber';
 import { useCart } from './../context/ShoppingCart'; 
+import { Link } from 'react-router-dom';
 
 async function getShoppingCart(setCart: any) {
   try {
@@ -42,7 +43,9 @@ export default function Home() {
       </div>
       <div className="button_layout">
         <Button type="default" className="button" onClick={() => getShoppingCart(setCart)}>Generar Carrito</Button>
-        <Button type="default" className="button">Finalizar Compra</Button>
+        <Link to="/checkout">
+          <Button type="default" className="button">Finalizar Compra</Button>
+        </Link>
       </div>
     </div>
   );

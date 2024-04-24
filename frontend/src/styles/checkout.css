@@ -1,0 +1,13 @@
+.list_photo{
+    height: 60px;
+    width: 60px;
+}
+
+.product_info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
