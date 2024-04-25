@@ -1,4 +1,5 @@
-from flask import Flask, request, jsonify
+from flask import Flask, jsonify, request
+from flask_cors import CORS
 import requests
 
 app = Flask(__name__)
@@ -15,7 +16,7 @@ def process_shopping_cart():
     products = get_products_from_api(shoppingCart)
     shoppingCartWithQuantities = get_shopping_cart_products_from_all(shoppingCart, products)
     isThisCartPossible = chek_if_the_cart_is_possible(shoppingCartWithQuantities)
-    return jsonify({'CartPossible': str(isThisCartPossible)})
+    return jsonify({'shoppingCart': shoppingCartWithQuantities, 'cartPossible': str(isThisCartPossible)})
 
 # As getting the full list of products can take a long time, we can limit the number of products returned by the API
 # based on the biggest shopping cart item id
@@ -32,7 +33,8 @@ def get_products_from_api(shoppingCart):
     skip = 0
     response = requests.get(f'https://dummyjson.com/products?limit=10&skip={skip}')
     apiResponse = response.json()
-    while skip <= check_biggest_id(shoppingCart):
+    biggestCartId = check_biggest_id(shoppingCart)
+    while skip <= biggestCartId:
         productsList.extend(apiResponse['products'])
         skip += 10
         response = requests.get(f'https://dummyjson.com/products?limit=10&skip={skip}')
@@ -59,4 +61,5 @@ def chek_if_the_cart_is_possible(desiredProducts):
     return True
 
 if __name__ == '__main__':
+    CORS(app, resources={r"/api/*": {"origins": "*"}})
     app.run()
