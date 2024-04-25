@@ -61,5 +61,5 @@ def chek_if_the_cart_is_possible(desiredProducts):
     return True
 
 if __name__ == '__main__':
-    CORS(app, resources={r"/api/*": {"origins": "*"}})
+    CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
     app.run()
