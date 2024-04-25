@@ -15,7 +15,6 @@ export default function Cart() {
           return null;
         }
     }
-    
 
     if (!cart || cart.products.length === 0) {
         return (
@@ -38,8 +37,10 @@ export default function Cart() {
         <div className="page_layout">
             <h1>Shopping Cart</h1>
             <Col>
-                {cart.products.map((product: any) => (
-                    <Card className="card_layout" 
+                {cart.products.map((product: any, index: number) => (
+                    <Card 
+                        key={index}
+                        className="card_layout" 
                         style={{ marginBottom: 32 }}
                         cover={<img alt={product.title} src={product.thumbnail} />}
                     >

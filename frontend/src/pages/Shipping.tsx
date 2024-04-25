@@ -23,11 +23,11 @@ export default function Shipping() {
                 type: 'success',
                 content: 'Pedido realizado con éxito, serás redirigido al inicio en 3 segundos',
             });
-            }, 3000);
+            }, 2000);
         ;
         setTimeout(() => {
             navigate("/");
-        }, 2000);
+        }, 5000);
       };
 
     useEffect(() => {
