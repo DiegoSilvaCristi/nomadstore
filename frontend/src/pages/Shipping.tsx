@@ -1,22 +1,33 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link, useNavigate  } from 'react-router-dom';
 import { Alert, Button, Form, Radio, Input, InputNumber, message } from 'antd';
-import { Link } from 'react-router-dom';
 
 export default function Shipping() {
     const location = useLocation();
     const [shippingInfo, setShippingInfo] = useState(null);
     const { TextArea } = Input;
+    const navigate = useNavigate();
 
     const [messageApi, contextHolder] = message.useMessage();
+    const key = 'updatable';
 
     const success = () => {
         messageApi.open({
-          type: 'success',
-          content: 'This is a success message',
-        });
-        <Link to="/">
-        </Link>
+                key,
+                type: 'loading',
+                content: 'Procesando envío...',
+            });
+            setTimeout(() => {
+            messageApi.open({
+                key,
+                type: 'success',
+                content: 'Pedido realizado con éxito, serás redirigido al inicio en 3 segundos',
+            });
+            }, 3000);
+        ;
+        setTimeout(() => {
+            navigate("/");
+        }, 2000);
       };
 
     useEffect(() => {
@@ -111,16 +122,14 @@ export default function Shipping() {
                     </Form>
                 </div>
                 <div className="button_layout">
-                    <Link to="/cart">
+                    <Link to="/checkout">
                         <Button type="default" className="button">Volver</Button>
                     </Link>
-                    <Link to="/">
-                        <Button type="default" className="button" >Confirmar Pedido</Button>
-                    </Link>
+                    {contextHolder}
+                    <Button type="default" className="button" onClick={success}>Confirmar Pedido</Button>
                 </div>
 
             </div>
         );
     }
 }
-

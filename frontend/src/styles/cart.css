@@ -36,3 +36,18 @@
 .total{
     text-decoration: line-through;
 }
+
+.checkout_button_layout{
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    width: 80%;
+    justify-content: space-evenly;
+}
+
+.cards{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 60%;
+}
