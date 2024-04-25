@@ -12,7 +12,7 @@ El backend corre en el puerto 3000 y presenta manejo por CORS para la comunicaci
 
 #### ¿Cómo correr el backend?   
 
-En primer lugar, hay que asegurarse de tener instaladas todas las tecnologías a utilizar: ```python```, ```Flask```, ```requests```, ```jsonify``` y ```requests```. Luego, se puede proceder con: 
+En primer lugar, hay que asegurarse de tener instaladas todas las tecnologías a utilizar: ```python```, ```Flask```, ```request```, ```jsonify``` y ```requests```. Luego, se puede proceder con: 
 
 1. Activar el entorno virtual
 ```bash
